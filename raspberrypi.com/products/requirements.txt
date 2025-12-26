@@ -1,0 +1,8 @@
+playwright==1.52.0
+pandas==2.3.0
+beautifulsoup4==4.12.2
+lxml==5.4.0
+requests==2.29.0
+markdownify==1.1.0
+jsonschema
+openpyxl==3.1.2
