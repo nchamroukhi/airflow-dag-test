@@ -1,0 +1,4 @@
+lxml==5.2.2
+requests==2.32.2
+jsonschema==4.25.1
+markdownify==0.11.6
