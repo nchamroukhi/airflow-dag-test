@@ -50,6 +50,7 @@ def main():
     parser.add_argument("--group_index", type=int, required=True)
     parser.add_argument("--group_count", type=int, required=True)
     parser.add_argument("--output_dir", type=str, required=True)
+    parser.add_argument("--website", type=str, required=True) # Add this
     args = parser.parse_args()
 
     with open(args.structure_file, "r") as f:
@@ -83,12 +84,15 @@ def main():
         args.group_index * batch_size : (args.group_index + 1) * batch_size
     ]
 
+    base_repo_path = os.path.dirname(os.path.abspath(__file__))
+    crawl_script = os.path.join(base_repo_path, args.website, "products", "crawl.py")
+
     for topic in current_group:
         print(f"Processing topic {topic['path']}")
         subprocess.run(
             [
                 "python",
-                "/app/crawl.py",
+                crawl_script,
                 "--url",
                 topic["url"],
                 "--out",
